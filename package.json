@@ -1,0 +1,16 @@
+{
+  "name": "bankjoy",
+  "version": "1.0.0",
+  "description": "Interview Assessment",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "kishore",
+  "license": "ISC",
+  "devDependencies": {
+    "@shelex/cypress-allure-plugin": "^2.40.2",
+    "allure-commandline": "^2.32.0",
+    "cypress": "^14.0.1"
+  }
+}
