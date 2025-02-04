@@ -1,10 +1,10 @@
 class ListsAPI {
-  getLists(type, format) {
-    console.log(`/lists/${type}/${format}`)
+  // List of available series or group
+    getLists(type, format) {
     return cy.request({
       method: 'GET',
       url: `/lists/${type}/${format}`,
-      failOnStatusCode: false,
+      failOnStatusCode: false, // This is to handle 4xx and 5xx cases
     });
   }
 }
