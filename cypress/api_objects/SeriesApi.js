@@ -9,13 +9,19 @@ class SeriesAPI {
     }
   
     // Returns observations filtered by a Series Name
-    getObservations(seriesNames, format) {
-      return cy.request({
-        method: 'GET',
-        url: `/observations/${seriesNames}/${format}`,
-        failOnStatusCode: false,
-      });
-    }
+    getObservations(seriesNames, format, startDate) {
+        let url = `/observations/${seriesNames}/${format}`;
+    
+        if (startDate) {
+          url += `?start_date=${startDate}`;
+        }
+    
+        return cy.request({
+          method: 'GET',
+          url,
+          failOnStatusCode: false,
+        });
+      }
   }
   
   export default new SeriesAPI();
