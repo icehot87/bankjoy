@@ -6,7 +6,7 @@ describe('Series Observation API', () => {
     const format = 'json';
     const startDate = '2024-01-01';
 
-    SeriesAPI.getObservations(seriesName, format, startDate).then((response) => {
+    SeriesAPI.getObservations(seriesName, format, {start_date: startDate}).then((response) => {
       expect(response.status).to.eq(200);
       expect(response.headers['content-type']).to.contain('application/json');
 
@@ -34,8 +34,10 @@ describe('Series Observation API', () => {
       expect(firstObservation[seriesName]).to.have.property('v');
 
        const firstValue = Number.parseFloat(firstObservation[seriesName].v);
-       expect(firstValue).to.be.a('number');
-       expect(firstValue).to.be.greaterThan(0);
+       expect(firstValue).to.be.a('number'); // Check if the value is a number
+       expect(firstValue).to.be.greaterThan(0); // Check if it's greater than zero
     });
-});
+    });
+
+
 });
