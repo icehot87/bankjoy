@@ -1,0 +1,31 @@
+<?xml version='1.0'?>
+<ns2:test-suite xmlns:ns2='urn:model.allure.qatools.yandex.ru' start='1738693759766' stop='1738693761865'>
+    <name>Lists API</name>
+    <title>Lists API</title>
+    <test-cases>
+        <test-case start='1738693759766' status='passed' stop='1738693761454'>
+            <name>should return a list of series (200)</name>
+            <title>should return a list of series (200)</title>
+            <labels/>
+            <parameters/>
+            <steps/>
+            <attachments/>
+        </test-case>
+        <test-case start='1738693761495' status='passed' stop='1738693761677'>
+            <name>should return a 400 error for invalid input</name>
+            <title>should return a 400 error for invalid input</title>
+            <labels/>
+            <parameters/>
+            <steps/>
+            <attachments/>
+        </test-case>
+        <test-case start='1738693761689' status='passed' stop='1738693761865'>
+            <name>should return a 404 error for unavailable data</name>
+            <title>should return a 404 error for unavailable data</title>
+            <labels/>
+            <parameters/>
+            <steps/>
+            <attachments/>
+        </test-case>
+    </test-cases>
+</ns2:test-suite>
