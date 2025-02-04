@@ -1,4 +1,0 @@
-"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
-"","1688","should return a list of series (200)","","Tue Feb 04 13:29:19 EST 2025","passed","Tue Feb 04 13:29:21 EST 2025","","Lists API","Lists API","should return a list of series (200)"
-"","182","should return a 400 error for invalid input","","Tue Feb 04 13:29:21 EST 2025","passed","Tue Feb 04 13:29:21 EST 2025","","Lists API","Lists API","should return a 400 error for invalid input"
-"","176","should return a 404 error for unavailable data","","Tue Feb 04 13:29:21 EST 2025","passed","Tue Feb 04 13:29:21 EST 2025","","Lists API","Lists API","should return a 404 error for unavailable data"
