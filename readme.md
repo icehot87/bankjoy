@@ -19,12 +19,12 @@ There are three ways to run the Cypress tests.
 | Command | Description |
 |---------|-------------|
 | ```npm run tests``` | Runs the tests and generate HTML test report |
-| ```npm run beforetest``` | Clean the test reports folder |
-| ```npm run aftertest``` | Generate report if you used the last two methods to run Cypress test |
+| ```npm run clean``` | Clean the test reports folder |
+| ```npm run report``` | Generate report if you used the last two methods to run Cypress test |
 
-2. You can run using the regular way by running the command ```npx cypress open``` which opens the Cypress App and follow the steps in the App. Run aftertest command to generate HTML report
+2. You can run using the regular way by running the command ```npx cypress open``` which opens the Cypress App and follow the steps in the App. Run report command to generate HTML report
 
-3. You could also run the command ```npx cypress run``` which runs all the tests in terminal. Run aftertest command to generate HTML report
+3. You could also run the command ```npx cypress run``` which runs all the tests in terminal. Run report command to generate HTML report
 
 ## Observations
 1. Found out that ```cy.intercept``` gets bypassed by ```cy.request```, so stubbing and mocking is not possible with API. [Cypress Doc](https://docs.cypress.io/api/commands/request#cyrequest-sends-requests-to-actual-endpoints-bypassing-those-defined-using-cyintercept)
@@ -43,3 +43,4 @@ If I had more time, I would have done the following:
 3. Abstract the requests and responses to data-driven style testing. i.e., using helper methods and fixtures to store and pass data.
 4. Utilize the HTML reporting plug-in Allure to create different type of test suites. e.g., Sanity, Smoke, Regression etc.
 5. Create necessary workflow file to integrate these tests in CI/CD. e.g., Create yml file inside .github/workflows directory to make these tests run on GitHub Actions.
+6. I would install 3rd party plug-ins like Prettier to format the code better.

@@ -29,3 +29,6 @@ logs
 
 # Screenshots
 screenshots/
+
+# Misc
+.DS_Store

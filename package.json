@@ -7,9 +7,9 @@
     "cy:run": "cypress run --env allure=true --reporter mocha-allure-reporter",
     "clean:folders": "rm -R -f allure-report/* && rm -R -f allure-results/*",
     "allure:report": "allure generate allure-results --clean -o allure-report && allure open allure-report",
-    "beforetest": "npm run clean:folders",
-    "tests": "npm run cy:run && npm run aftertest || true",
-    "aftertest": "npm run allure:report"
+    "clean": "npm run clean:folders",
+    "tests": "npm run cy:run && npm run report || true",
+    "report": "npm run allure:report"
   },
   "author": "kishore",
   "license": "ISC",

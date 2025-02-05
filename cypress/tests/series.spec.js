@@ -4,7 +4,7 @@ import * as allure from "allure-js-commons";
 // Positive scenarios
 function differentCurrencyTests(currencyType, currencyLabel, currencyDescription) {
 describe(`Series API positive tests for ${currencyType}`, () => {
-  it('should return series observation (200)', () => {
+  it('should return 200 for series observation when valid inputs given', () => {
     const seriesName = currencyType;
     const format = 'json';
     const startDate = '2024-01-01';
@@ -37,8 +37,8 @@ describe(`Series API positive tests for ${currencyType}`, () => {
       expect(firstObservation[seriesName]).to.have.property('v');
 
        const firstValue = Number.parseFloat(firstObservation[seriesName].v);
-       expect(firstValue).to.be.a('number'); // Check if the value is a number
-       expect(firstValue).to.be.greaterThan(0); // Check if it's greater than zero
+       expect(firstValue).to.be.a('number');
+       expect(firstValue).to.be.greaterThan(0);
     });
     });
 
@@ -73,7 +73,7 @@ describe(`Series API positive tests for ${currencyType}`, () => {
 
 // Negative scenarios
 describe('Series API negative tests', () => {
-    it('return 400 when both date and recent activities are given', () => {
+    it('should return 400 when both date and recent activities are given', () => {
         const seriesName = 'FXCADUSD';
         const format = 'json';
         const startDate = '2024-01-01'
@@ -91,7 +91,7 @@ describe('Series API negative tests', () => {
         })
     })
 
-    it('return 404 when an invalid series is given', () => {
+    it('should return 404 when an invalid series is given', () => {
         const seriesName = 'invalid';
         const format = 'json';
         const expectedResponse = {
@@ -103,13 +103,13 @@ describe('Series API negative tests', () => {
             expect(response.status).to.eq(404);
             expect(response.headers['content-type']).to.contain('application/json');
 
-            const dynamicExpectedResponse = JSON.parse(JSON.stringify(expectedResponse)); // This will do a deep copy
-            dynamicExpectedResponse.message = dynamicExpectedResponse.message.replace('{series}', seriesName); // Replace the required placeholder
+            const dynamicExpectedResponse = JSON.parse(JSON.stringify(expectedResponse));
+            dynamicExpectedResponse.message = dynamicExpectedResponse.message.replace('{series}', seriesName);
             expect(response.body).to.deep.equal(dynamicExpectedResponse)
             });
         })
 
-    it('return 400 when invalid format is given', () => {
+    it('should return 400 when invalid format is given', () => {
         const seriesName = 'FXCADUSD';
         const format = 'jpg';
         const expectedResponse = {
@@ -121,15 +121,15 @@ describe('Series API negative tests', () => {
             expect(response.status).to.eq(400);
             expect(response.headers['content-type']).to.contain('application/json');
     
-            const dynamicExpectedResponse = JSON.parse(JSON.stringify(expectedResponse)); // This will do a deep copy
-            dynamicExpectedResponse.message = dynamicExpectedResponse.message.replace('{format}', format); // Replace the required placeholder
+            const dynamicExpectedResponse = JSON.parse(JSON.stringify(expectedResponse));
+            dynamicExpectedResponse.message = dynamicExpectedResponse.message.replace('{format}', format);
             expect(response.body).to.deep.equal(dynamicExpectedResponse)
         })
     })
 });
 
 
-// To demonstrate code reusability by modifying your existing code to run for various currencies, in addition to "CAD to USD."
+// To demonstrate code reusability by modifying existing code to run for various currencies, in addition to "CAD to USD."
 describe('Future currency', () => {
     differentCurrencyTests('FXCADUSD', 'CAD/USD','Canadian dollar to US dollar daily exchange rate');
     differentCurrencyTests('FXAUDCAD', 'AUD/CAD','Australian dollar to Canadian dollar daily exchange rate');
