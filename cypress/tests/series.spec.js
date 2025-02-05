@@ -1,6 +1,7 @@
 import SeriesAPI from '../api_objects/SeriesAPI';
 import * as allure from "allure-js-commons";
 
+// Positive scenarios
 function differentCurrencyTests(currencyType, currencyLabel, currencyDescription) {
 describe(`Series API positive tests for ${currencyType}`, () => {
   it('should return series observation (200)', () => {
@@ -70,6 +71,7 @@ describe(`Series API positive tests for ${currencyType}`, () => {
 });
 }
 
+// Negative scenarios
 describe('Series API negative tests', () => {
     it('return 400 when both date and recent activities are given', () => {
         const seriesName = 'FXCADUSD';
