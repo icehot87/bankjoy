@@ -29,14 +29,14 @@ There are three ways to run the Cypress tests.
 ## Observations
 1. Found out that ```cy.intercept``` gets bypassed by ```cy.request```, so stubbing and mocking is not possible with API. [Cypress Doc](https://docs.cypress.io/api/commands/request#cyrequest-sends-requests-to-actual-endpoints-bypassing-those-defined-using-cyintercept)
 2. I have followed POM by creating API objects and make the necessary calls from Spec files to the objects.
-3. I have created [lists.spec.js](cypress/tests/lists.spec.js) tests such a way, on how to handle fixed and dynamic responses using fixture
+3. I have created [lists.spec.js](cypress/tests/lists.spec.js) to showcase, on how to handle fixed and dynamic responses using fixture
 4. ```cy.request``` by default fails a test if the response is not 2xx or 3xx series, I tried to add ```failOnStatusCode: false``` globally to the cypress config but it seems to not work, so I have added it to API objects.
 
 ## Improvements
 If I had more time, I would have done the following:
 1. There are more negative scenarios that could be covered for that one API. E.g.,
    1. Boundary value tests for the optional parameters: start_data, end_date, recent, recent_weeks, recent_months, recent_years.
-   2. Invalid date tests
+   2. Invalid date & format tests
    3. Data validation when ordering ascending or descending
    4. Optional parameters data type validation. i.e., checking the API's error handling when passing the wrong data type.
 2. Implement end to end test scenarios.
