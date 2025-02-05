@@ -1,9 +1,10 @@
 import SeriesAPI from '../api_objects/SeriesAPI';
 import * as allure from "allure-js-commons";
 
-describe('Series Observation API', () => {
+function differentCurrencyTests(currencyType, currencyLabel, currencyDescription) {
+describe(`Series API positive tests for ${currencyType}`, () => {
   it('should return series observation (200)', () => {
-    const seriesName = 'FXCADUSD';
+    const seriesName = currencyType;
     const format = 'json';
     const startDate = '2024-01-01';
 
@@ -18,8 +19,8 @@ describe('Series Observation API', () => {
       expect(response.body.seriesDetail).to.have.property(seriesName);
 
       const seriesDetail = response.body.seriesDetail[seriesName];
-      expect(seriesDetail).to.have.property('label', 'CAD/USD');
-      expect(seriesDetail).to.have.property('description', 'Canadian dollar to US dollar daily exchange rate');
+      expect(seriesDetail).to.have.property('label', currencyLabel);
+      expect(seriesDetail).to.have.property('description', currencyDescription);
       expect(seriesDetail).to.have.property('dimension');
       expect(seriesDetail.dimension).to.have.property('key', 'd');
       expect(seriesDetail.dimension).to.have.property('name', 'Date');
@@ -40,8 +41,8 @@ describe('Series Observation API', () => {
     });
     });
 
-    it('calculate the average CAD to USD conversion rate for the recent 10 weeks',() => {
-        const seriesName = 'FXCADUSD';
+    it(`calculate the average ${currencyLabel} conversion rate for the recent 10 weeks`,() => {
+        const seriesName = currencyType;
         const format = 'json';
         const recentWeeks = 10;
 
@@ -51,8 +52,8 @@ describe('Series Observation API', () => {
 
             const observations = response.body.observations;
             const rates = Object.values(observations)
-                .filter(observation => observation.FXCADUSD?.v)
-                .map(observation => Number.parseFloat(observation.FXCADUSD.v));
+                .filter(observation => observation[currencyType]?.v)
+                .map(observation => Number.parseFloat(observation[currencyType].v));
 
             if (rates.length === 0) {
                 expect(true).to.equal(true);
@@ -66,8 +67,11 @@ describe('Series Observation API', () => {
             cy.task('log',`Average CAD to USD conversion rate of 10 weeks is ${average}`);
         })
     })
+});
+}
 
-    it('return 400 when both date and recent date are given', () => {
+describe('Series API negative tests', () => {
+    it('return 400 when both date and recent activities are given', () => {
         const seriesName = 'FXCADUSD';
         const format = 'json';
         const startDate = '2024-01-01'
@@ -121,3 +125,11 @@ describe('Series Observation API', () => {
         })
     })
 });
+
+
+// To demonstrate code reusability by modifying your existing code to run for various currencies, in addition to "CAD to USD."
+describe('Future currency', () => {
+    differentCurrencyTests('FXCADUSD', 'CAD/USD','Canadian dollar to US dollar daily exchange rate');
+    differentCurrencyTests('FXAUDCAD', 'AUD/CAD','Australian dollar to Canadian dollar daily exchange rate');
+    // Add more currency pairs as needed
+  });
