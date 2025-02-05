@@ -5,6 +5,14 @@ module.exports = defineConfig({
   e2e: {
     setupNodeEvents(on, config) {
       allureWriter(on, config);
+      
+      on('task', {
+        log(message) {
+          console.log(message);
+          return null;
+        },
+      });
+
       return config;
     },
     baseUrl: 'https://www.bankofcanada.ca/valet',
