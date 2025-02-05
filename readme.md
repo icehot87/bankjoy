@@ -39,6 +39,7 @@ If I had more time, I would have done the following:
    2. Invalid date & format tests
    3. Data validation when ordering ascending or descending
    4. Optional parameters data type validation. i.e., checking the API's error handling when passing the wrong data type.
+   5. Performance tests by capturing the response time and asserting them.
 2. Implement end to end test scenarios.
 3. Abstract the requests and responses to data-driven style testing. i.e., using helper methods and fixtures to store and pass data.
 4. Utilize the HTML reporting plug-in Allure to create different type of test suites. e.g., Sanity, Smoke, Regression etc.
